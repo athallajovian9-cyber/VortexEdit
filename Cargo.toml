@@ -1,0 +1,31 @@
+[package]
+name = "vortexedit"
+version = "0.1.0"
+edition = "2021"
+description = "GPU-accelerated text editor: wgpu + rustybuzz (HarfBuzz port) + ropey + tree-sitter"
+license = "MIT"
+
+[dependencies]
+wgpu = "24.0"
+winit = "0.30"
+pollster = "0.3"
+bytemuck = { version = "1", features = ["derive"] }
+ropey = "1.6"
+rustybuzz = "0.20"
+ab_glyph = "0.2"
+memmap2 = "0.9"
+crossbeam-channel = "0.5"
+regex = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tree-sitter = "0.24"
+tree-sitter-rust = "0.23"
+tree-sitter-python = "0.23"
+tree-sitter-javascript = "0.23"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+strip = true
+panic = "abort"
